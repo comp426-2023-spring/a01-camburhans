@@ -39,17 +39,13 @@ const readIndexHtml = () => {
 // 3. end with the data that you are reading in from ./public/index.html.
 const server = http.createServer((req, res) => {
     fs.readFile('./public/index.html', 'utf8', (err, data) => {
-      if (err) {
-        console.error(err);
-        res.writeHead(500);
-        return res.end();
-      }
-      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.statusCode=200;
+      res.setHeader('Content-type', 'text/html');
       res.end(data);
     });
   });
   
-  server.listen(3000);
+  server.listen(port, () => console.log(`Server listening on port ${port}`));
 
 
 
