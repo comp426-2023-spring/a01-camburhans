@@ -17,16 +17,13 @@ const port = args.port || 3000
 
 // If there is an error, put it on the console error and return. 
 // Do not be nice about exiting.
-const readIndexHtml = () => {
+const filedata = 
     fs.readFile('./public/index.html', 'utf8', (err, data) => {
       if (err) {
         console.error();
         return;
       }
-      // do something with the file data
-      console.log(data);
     });
-  };
 
 
 
@@ -38,12 +35,10 @@ const readIndexHtml = () => {
 // 2. set a header with content type `text/html`, and 
 // 3. end with the data that you are reading in from ./public/index.html.
 const server = http.createServer((req, res) => {
-    fs.readFile('./public/index.html', 'utf8', (err, data) => {
       res.statusCode=200;
       res.setHeader('Content-type', 'text/html');
       res.end(data);
     });
-  });
   
   server.listen(port, () => console.log(`Server listening on port ${port}`));
 
