@@ -20,7 +20,7 @@ const port = args.port || 3000;
 const readIndexHtml = () => {
     fs.readFile('./public/index.html', 'utf8', (err, data) => {
       if (err) {
-        console.error(err);
+        console.error();
         return;
       }
       // do something with the file data
@@ -37,7 +37,19 @@ const readIndexHtml = () => {
 // 1. status code 200, 
 // 2. set a header with content type `text/html`, and 
 // 3. end with the data that you are reading in from ./public/index.html.
-
+const server = http.createServer((req, res) => {
+    fs.readFile('./public/index.html', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        res.writeHead(500);
+        return res.end();
+      }
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(data);
+    });
+  });
+  
+  server.listen(3000);
 
 
 
