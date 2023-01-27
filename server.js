@@ -18,8 +18,7 @@ const hostname = '127.0.0.1';
 
 // If there is an error, put it on the console error and return. 
 // Do not be nice about exiting.
-var filedata = 
-    fs.readFile('./public/index.html', (err, data) => {
+var filedata = fs.readFile('./public/index.html', (err, data) => {
       if (err) {
         console.error();
         return;
@@ -37,7 +36,7 @@ var filedata =
 // 3. end with the data that you are reading in from ./public/index.html.
 const server = http.createServer((req, res) => {
       res.statusCode=200;
-      res.setHeader('Content-type', 'text/html');
+      res.setHeader('Content-Type', 'text/html');
       res.end(filedata);
     });
   
