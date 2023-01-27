@@ -37,7 +37,7 @@ const filedata =
 const server = http.createServer((req, res) => {
       res.statusCode=200;
       res.setHeader('Content-type', 'text/html');
-      res.end(data);
+      res.end(filedata);
     });
   
   server.listen(port, () => console.log(`Server listening on port ${port}`));
